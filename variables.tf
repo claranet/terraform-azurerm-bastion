@@ -54,18 +54,6 @@ variable "bastion_public_ip_custom_name" {
   default     = ""
 }
 
-variable "bastion_public_ip_allocation_method" {
-  description = "Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`."
-  type        = string
-  default     = "Dynamic"
-}
-
-variable "bastion_public_ip_sku" {
-  description = "The SKU of the Public IP. Accepted values are `Basic` and `Standard`."
-  type        = string
-  default     = "Standard"
-}
-
 variable "bastion_ipconfig_custom_name" {
   description = "Bastion IP Config custom name"
   type        = string

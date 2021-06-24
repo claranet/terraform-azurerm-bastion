@@ -6,8 +6,8 @@ resource "azurerm_public_ip" "bastion_pubip" {
   location            = var.location
   resource_group_name = var.resource_group_name
 
-  allocation_method = var.bastion_public_ip_allocation_method
-  sku               = var.bastion_public_ip_sku
+  sku               = "Standard" # Mandatory for Azure Bastion host
+  allocation_method = "Static"
 
   tags = merge(local.default_tags, var.extra_tags)
 }
