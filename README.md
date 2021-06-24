@@ -36,6 +36,37 @@ module "rg" {
   environment = var.environment
   stack       = var.stack
 }
+
+module "network-vnet" {
+  source  = "claranet/vnet/azurerm"
+  version = "x.x.x"
+
+  environment      = var.environment
+  location         = module.azure-region.location
+  location_short   = module.azure-region.location-short
+  client_name      = var.client_name
+  stack            = var.stack
+  custom_vnet_name = var.custom_vnet_name
+
+  resource_group_name = module.rg.resource_group_name
+  vnet_cidr           = ["10.10.1.0/16"]
+}
+
+module "bastion-host" {
+  source  = "claranet/bastion/azurerm"
+  version = "x.x.x"
+
+  client_name         = var.client_name
+  environment         = var.environment
+  stack               = var.stack
+  resource_group_name = module.rg.resource_group_name
+  location            = module.azure-region.location
+  location_short      = module.azure-region.location_short
+
+  subnet_bastion_cidr = local.subnets["bastion"].cidr
+
+  virtual_network_name = module.network-vnet.virtual_network_name
+}
 ```
 
 ## Providers
