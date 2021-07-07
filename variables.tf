@@ -29,18 +29,6 @@ variable "client_name" {
   type        = string
 }
 
-variable "name_prefix" {
-  description = "Optional prefix for Bastion name"
-  type        = string
-  default     = ""
-}
-
-variable "custom_name" {
-  description = "Custom Bastion name, generated if not set"
-  type        = string
-  default     = ""
-}
-
 variable "extra_tags" {
   description = "Additional tags to associate with resources."
   type        = map(string)
@@ -48,18 +36,6 @@ variable "extra_tags" {
 }
 
 # Bastion network parameters
-
-variable "bastion_public_ip_custom_name" {
-  description = "Bastion IP Config resource custom name"
-  type        = string
-  default     = ""
-}
-
-variable "bastion_ipconfig_custom_name" {
-  description = "Bastion IP Config custom name"
-  type        = string
-  default     = ""
-}
 
 variable "virtual_network_name" {
   description = "Virtual Network Name where the dedicated Subnet and Bastion will be created."

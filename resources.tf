@@ -1,8 +1,5 @@
 resource "azurerm_public_ip" "bastion_pubip" {
-  name = coalesce(
-    var.bastion_public_ip_custom_name,
-    "${coalesce(var.custom_name, local.default_basename)}-pubip",
-  )
+  name                = coalesce(var.bastion_public_ip_custom_name, azurecaf_name.bastion-pip.result)
   location            = var.location
   resource_group_name = var.resource_group_name
 
@@ -13,7 +10,7 @@ resource "azurerm_public_ip" "bastion_pubip" {
 }
 
 resource "azurerm_bastion_host" "bastion" {
-  name     = coalesce(var.custom_name, "${local.default_basename}-bastion")
+  name     = coalesce(var.bastion_custom_name, azurecaf_name.bastion.result)
   location = var.location
 
   # Must be in the same rg as VNET
