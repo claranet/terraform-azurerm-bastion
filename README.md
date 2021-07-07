@@ -73,7 +73,7 @@ module "bastion-host" {
 
 | Name    | Version |
 | ------- | ------- |
-| azurerm | >= 2.0  |
+| azurerm | >= 2.8  |
 
 ## Inputs
 
