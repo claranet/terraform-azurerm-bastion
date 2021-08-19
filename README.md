@@ -77,77 +77,57 @@ module "bastion_host" {
 
 ## Providers
 
-| Name    | Version |
-| ------- | ------- |
-| azurerm | >= 2.8  |
+| Name | Version |
+|------|---------|
+| azurecaf | ~> 1.1 |
+| azurerm | >= 2.8 |
 
 ## Modules
 
-| Name            | Source                  | Version |
-| --------------- | ----------------------- | ------- |
-| subnet\_bastion | claranet/subnet/azurerm | 4.2.0   |
+| Name | Source | Version |
+|------|--------|---------|
+| subnet\_bastion | claranet/subnet/azurerm | 4.2.0 |
 
 ## Resources
 
-| Name                                                                                                                         | Type     |
-| ---------------------------------------------------------------------------------------------------------------------------- | -------- |
+| Name | Type |
+|------|------|
+| [azurecaf_name.bastion](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
+| [azurecaf_name.bastion-pip](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
 | [azurerm_bastion_host.bastion](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/bastion_host) | resource |
 | [azurerm_public_ip.bastion_pubip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip) | resource |
 
 ## Inputs
 
-| Name                              | Description                                                                                                                                                     | Type          | Default | Required |
-| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------- | :------: |
-| bastion\_ipconfig\_custom\_name   | Bastion IP Config custom name                                                                                                                                   | `string`      | `""`    |    no    |
-| bastion\_public\_ip\_custom\_name | Bastion IP Config resource custom name                                                                                                                          | `string`      | `""`    |    no    |
-| client\_name                      | Client name/account used in naming                                                                                                                              | `string`      | n/a     |   yes    |
-| custom\_name                      | Custom Bastion name, generated if not set                                                                                                                       | `string`      | `""`    |    no    |
-| environment                       | Project environment                                                                                                                                             | `string`      | n/a     |   yes    |
-| extra\_tags                       | Additional tags to associate with resources.                                                                                                                    | `map(string)` | `{}`    |    no    |
-| location                          | Azure region to use                                                                                                                                             | `string`      | n/a     |   yes    |
-| location\_short                   | Short string for Azure location                                                                                                                                 | `string`      | n/a     |   yes    |
-| name\_prefix                      | Optional prefix for Bastion name                                                                                                                                | `string`      | `""`    |    no    |
-| network\_resource\_group\_name    | Vnet and subnet Resource group name. To use only if you need to have a dedicated Resource Group for all Bastion resources. (set via `resource_group_name` var.) | `string`      | `""`    |    no    |
-| resource\_group\_name             | Name of the resource group                                                                                                                                      | `string`      | n/a     |   yes    |
-| stack                             | Project stack name                                                                                                                                              | `string`      | n/a     |   yes    |
-| subnet\_bastion\_cidr             | CIDR range for the dedicated Bastion subnet. Must be a range available in the Vnet.                                                                             | `string`      | n/a     |   yes    |
-| virtual\_network\_name            | Virtual Network Name where the dedicated Subnet and Bastion will be created.                                                                                    | `string`      | n/a     |   yes    |
-| Name                              | Version                                                                                                                                                         |
-| --------                          | -------                                                                                                                                                         |
-| azurecaf                          | ~> 1.1                                                                                                                                                          |
-| azurerm                           | >= 2.8                                                                                                                                                          |
-
-## Inputs
-
-| Name                              | Description                                                                                                                                                        | Type          | Default | Required |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- | ------- | :------: |
-| bastion\_custom\_name             | Custom Bastion name, generated if not set                                                                                                                          | `string`      | `""`    |    no    |
-| bastion\_ipconfig\_custom\_name   | Bastion IP Config custom name                                                                                                                                      | `string`      | `""`    |    no    |
-| bastion\_public\_ip\_custom\_name | Bastion IP Config resource custom name                                                                                                                             | `string`      | `""`    |    no    |
-| client\_name                      | Client name/account used in naming                                                                                                                                 | `string`      | n/a     |   yes    |
-| environment                       | Project environment                                                                                                                                                | `string`      | n/a     |   yes    |
-| extra\_tags                       | Additional tags to associate with resources.                                                                                                                       | `map(string)` | `{}`    |    no    |
-| location                          | Azure region to use                                                                                                                                                | `string`      | n/a     |   yes    |
-| location\_short                   | Short string for Azure location                                                                                                                                    | `string`      | n/a     |   yes    |
-| name\_prefix                      | Optional prefix for the generated name                                                                                                                             | `string`      | `""`    |    no    |
-| name\_suffix                      | Optional suffix for the generated name                                                                                                                             | `string`      | `""`    |    no    |
-| network\_resource\_group\_name    | Vnet and subnet Resource group name. To use only if you need to have a dedicated Resource Group for all Bastion resources. (set via `resource_group_name` var.)    | `string`      | `""`    |    no    |
-| resource\_group\_name             | Name of the resource group                                                                                                                                         | `string`      | n/a     |   yes    |
-| stack                             | Project stack name                                                                                                                                                 | `string`      | n/a     |   yes    |
-| subnet\_bastion\_cidr             | CIDR range for the dedicated Bastion subnet. Must be a range available in the Vnet.                                                                                | `string`      | n/a     |   yes    |
-| use\_caf\_naming                  | Use the Azure CAF naming provider to generate default resource name. `custom_rg_name` override this if set. Legacy default name is used if this is set to `false`. | `bool`        | `true`  |    no    |
-| virtual\_network\_name            | Virtual Network Name where the dedicated Subnet and Bastion will be created.                                                                                       | `string`      | n/a     |   yes    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| client\_name | Client name/account used in naming | `string` | n/a | yes |
+| custom\_bastion\_name | Custom Bastion name, generated if not set | `string` | `""` | no |
+| custom\_ipconfig\_name | Bastion IP Config custom name | `string` | `""` | no |
+| custom\_public\_ip\_name | Bastion IP Config resource custom name | `string` | `""` | no |
+| environment | Project environment | `string` | n/a | yes |
+| extra\_tags | Additional tags to associate with resources. | `map(string)` | `{}` | no |
+| location | Azure region to use | `string` | n/a | yes |
+| location\_short | Short string for Azure location | `string` | n/a | yes |
+| name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
+| name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
+| network\_resource\_group\_name | Vnet and subnet Resource group name. To use only if you need to have a dedicated Resource Group for all Bastion resources. (set via `resource_group_name` var.) | `string` | `""` | no |
+| resource\_group\_name | Name of the resource group | `string` | n/a | yes |
+| stack | Project stack name | `string` | n/a | yes |
+| subnet\_bastion\_cidr | CIDR range for the dedicated Bastion subnet. Must be a range available in the Vnet. | `string` | n/a | yes |
+| use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `custom_rg_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
+| virtual\_network\_name | Virtual Network Name where the dedicated Subnet and Bastion will be created. | `string` | n/a | yes |
 
 ## Outputs
 
-| Name                      | Description                              |
-| ------------------------- | ---------------------------------------- |
-| bastion\_fqdn             | Azure Bastion FQDN / generated DNS name. |
-| bastion\_id               | Azure Bastion id.                        |
-| bastion\_name             | Azure Bastion name.                      |
-| bastion\_public\_ip       | Azure Bastion public IP.                 |
-| bastion\_public\_ip\_name | Azure Bastion public IP resource name.   |
-| bastion\_subnet\_id       | Dedicated subnet id for the Bastion.     |
+| Name | Description |
+|------|-------------|
+| bastion\_fqdn | Azure Bastion FQDN / generated DNS name. |
+| bastion\_id | Azure Bastion id. |
+| bastion\_name | Azure Bastion name. |
+| bastion\_public\_ip | Azure Bastion public IP. |
+| bastion\_public\_ip\_name | Azure Bastion public IP resource name. |
+| bastion\_subnet\_id | Dedicated subnet id for the Bastion. |
 <!-- END_TF_DOCS -->
 ## Related documentation
 
