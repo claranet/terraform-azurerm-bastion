@@ -1,5 +1,5 @@
 resource "azurerm_public_ip" "bastion_pubip" {
-  name                = coalesce(var.custom_public_ip_name, azurecaf_name.bastion-pip.result)
+  name                = coalesce(var.custom_public_ip_name, azurecaf_name.bastion_pip.result)
   location            = var.location
   resource_group_name = var.resource_group_name
 

@@ -20,6 +20,7 @@ variable "use_caf_naming" {
 
 variable "custom_bastion_name" {
   description = "Custom Bastion name, generated if not set"
+  type        = string
   default     = ""
 }
 

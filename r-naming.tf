@@ -8,7 +8,7 @@ resource "azurecaf_name" "bastion" {
   separator     = "-"
 }
 
-resource "azurecaf_name" "bastion-pip" {
+resource "azurecaf_name" "bastion_pip" {
   name          = var.stack
   resource_type = "azurerm_public_ip"
   prefixes      = var.name_prefix == "" ? null : [local.name_prefix]

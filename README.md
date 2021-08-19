@@ -3,6 +3,11 @@
 
 Azure terraform module to create an Azure Bastion (managed jump host) with optional dedicated subnet.
 
+## Naming
+
+Resource naming is based on the [Microsoft CAF naming convention best practices](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming). Legacy naming is available by setting the parameter `use_caf_naming` to false.
+We rely on [the official Terraform Azure CAF naming provider](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/azurecaf_name) to generate resource names.
+
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
 
@@ -13,11 +18,6 @@ Azure terraform module to create an Azure Bastion (managed jump host) with optio
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 | >= 2.x.x       | 0.12.x            | < 2.0           |
 | <  2.x.x       | 0.11.x            | < 2.0           |
-
-## Naming
-
-Resource naming is based on the [Microsoft CAF naming convention best practices](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming). Legacy naming is available by setting the parameter `use_caf_naming` to false.
-We rely on [the official Terraform Azure CAF naming provider](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/azurecaf_name) to generate resource names.
 
 ## Usage
 
@@ -93,7 +93,7 @@ module "bastion_host" {
 | Name | Type |
 |------|------|
 | [azurecaf_name.bastion](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
-| [azurecaf_name.bastion-pip](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
+| [azurecaf_name.bastion_pip](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
 | [azurerm_bastion_host.bastion](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/bastion_host) | resource |
 | [azurerm_public_ip.bastion_pubip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip) | resource |
 
@@ -129,6 +129,7 @@ module "bastion_host" {
 | bastion\_public\_ip\_name | Azure Bastion public IP resource name. |
 | bastion\_subnet\_id | Dedicated subnet id for the Bastion. |
 <!-- END_TF_DOCS -->
+
 ## Related documentation
 
 Azure Bastion documentation: [docs.microsoft.com/en-us/azure/bastion/](https://docs.microsoft.com/en-us/azure/bastion/)
