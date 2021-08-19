@@ -1,6 +1,6 @@
 output "bastion_subnet_id" {
   description = "Dedicated subnet id for the Bastion."
-  value       = module.azure-network-subnet-bastion.subnet_id
+  value       = module.subnet_bastion.subnet_id
 }
 
 output "bastion_id" {

@@ -80,7 +80,7 @@ module "bastion-host" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| azure-network-subnet-bastion | claranet/subnet/azurerm | 4.2.0 |
+| subnet\_bastion | claranet/subnet/azurerm | 4.2.0 |
 
 ## Resources
 

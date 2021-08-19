@@ -1,4 +1,4 @@
-module "azure-network-subnet-bastion" {
+module "subnet_bastion" {
   source  = "claranet/subnet/azurerm"
   version = "4.2.0"
 

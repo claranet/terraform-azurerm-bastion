@@ -37,6 +37,7 @@ variable "name_prefix" {
 
 variable "custom_name" {
   description = "Custom Bastion name, generated if not set"
+  type        = string
   default     = ""
 }
 
