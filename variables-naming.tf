@@ -18,18 +18,18 @@ variable "use_caf_naming" {
 
 # Bastion naming
 
-variable "bastion_custom_name" {
+variable "custom_bastion_name" {
   description = "Custom Bastion name, generated if not set"
   default     = ""
 }
 
-variable "bastion_public_ip_custom_name" {
+variable "custom_public_ip_name" {
   description = "Bastion IP Config resource custom name"
   type        = string
   default     = ""
 }
 
-variable "bastion_ipconfig_custom_name" {
+variable "custom_ipconfig_name" {
   description = "Bastion IP Config custom name"
   type        = string
   default     = ""
