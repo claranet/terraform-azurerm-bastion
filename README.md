@@ -3,11 +3,12 @@
 
 Azure terraform module to create an Azure Bastion (managed jump host) with optional dedicated subnet.
 
-## Version compatibility
+<!-- BEGIN_TF_DOCS -->
+## Global versionning rule for Claranet Azure modules
 
 | Module version | Terraform version | AzureRM version |
 | -------------- | ----------------- | --------------- |
-| >= 5.x.x       | 1.0.x             | >= 2.0          |
+| >= 5.x.x       | 0.15.x & 1.0.x    | >= 2.0          |
 | >= 4.x.x       | 0.13.x            | >= 2.0          |
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 | >= 2.x.x       | 0.12.x            | < 2.0           |
@@ -20,7 +21,7 @@ which set some terraform variables in the environment needed by this module.
 More details about variables set by the `terraform-wrapper` available in the [documentation](https://github.com/claranet/terraform-wrapper#environment).
 
 ```hcl
-module "azure-region" {
+module "azure_region" {
   source  = "claranet/regions/azurerm"
   version = "x.x.x"
 
@@ -31,28 +32,27 @@ module "rg" {
   source  = "claranet/rg/azurerm"
   version = "x.x.x"
 
-  location    = module.azure-region.location
+  location    = module.azure_region.location
   client_name = var.client_name
   environment = var.environment
   stack       = var.stack
 }
 
-module "network-vnet" {
+module "vnet" {
   source  = "claranet/vnet/azurerm"
   version = "x.x.x"
 
-  environment      = var.environment
-  location         = module.azure-region.location
-  location_short   = module.azure-region.location-short
-  client_name      = var.client_name
-  stack            = var.stack
-  custom_vnet_name = var.custom_vnet_name
+  environment    = var.environment
+  location       = module.azure_region.location
+  location_short = module.azure_region.location_short
+  client_name    = var.client_name
+  stack          = var.stack
 
   resource_group_name = module.rg.resource_group_name
   vnet_cidr           = ["10.10.1.0/16"]
 }
 
-module "bastion-host" {
+module "bastion_host" {
   source  = "claranet/bastion/azurerm"
   version = "x.x.x"
 
@@ -60,16 +60,16 @@ module "bastion-host" {
   environment         = var.environment
   stack               = var.stack
   resource_group_name = module.rg.resource_group_name
-  location            = module.azure-region.location
-  location_short      = module.azure-region.location_short
+  location            = module.azure_region.location
+  location_short      = module.azure_region.location_short
 
-  subnet_bastion_cidr = local.subnets["bastion"].cidr
+  subnet_bastion_cidr = "10.10.1.0/27"
 
-  virtual_network_name = module.network-vnet.virtual_network_name
+  virtual_network_name = module.vnet.virtual_network_name
 }
+
 ```
 
-<!-- BEGIN_TF_DOCS -->
 ## Providers
 
 | Name | Version |
@@ -121,4 +121,4 @@ module "bastion-host" {
 <!-- END_TF_DOCS -->
 ## Related documentation
 
-Terraform Azure Bastion documentation: [terraform.io/providers/hashicorp/azurerm/latest/docs/resources/bastion_host](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/bastion_host)
+Azure Bastion documentation: [docs.microsoft.com/en-us/azure/bastion/](https://docs.microsoft.com/en-us/azure/bastion/)
