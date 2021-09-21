@@ -4,7 +4,7 @@
 Azure terraform module to create an Azure Bastion (managed jump host) with optional dedicated subnet.
 
 <!-- BEGIN_TF_DOCS -->
-## Global versionning rule for Claranet Azure modules
+## Global versioning rule for Claranet Azure modules
 
 | Module version | Terraform version | AzureRM version |
 | -------------- | ----------------- | --------------- |
