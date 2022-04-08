@@ -29,14 +29,7 @@ variable "client_name" {
   type        = string
 }
 
-variable "extra_tags" {
-  description = "Additional tags to associate with resources."
-  type        = map(string)
-  default     = {}
-}
-
 # Bastion network parameters
-
 variable "virtual_network_name" {
   description = "Virtual Network Name where the dedicated Subnet and Bastion will be created."
   type        = string

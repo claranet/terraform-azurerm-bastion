@@ -105,8 +105,9 @@ module "bastion_host" {
 | custom\_bastion\_name | Custom Bastion name, generated if not set | `string` | `""` | no |
 | custom\_ipconfig\_name | Bastion IP Config custom name | `string` | `""` | no |
 | custom\_public\_ip\_name | Bastion IP Config resource custom name | `string` | `""` | no |
+| default\_tags\_enabled | Option to enable or disable default tags | `bool` | `true` | no |
 | environment | Project environment | `string` | n/a | yes |
-| extra\_tags | Additional tags to associate with resources. | `map(string)` | `{}` | no |
+| extra\_tags | Additional tags to associate with resources | `map(string)` | `{}` | no |
 | location | Azure region to use | `string` | n/a | yes |
 | location\_short | Short string for Azure location | `string` | n/a | yes |
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
