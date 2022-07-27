@@ -80,7 +80,7 @@ module "bastion_host" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.1 |
-| azurerm | >= 2.8 |
+| azurerm | >= 2.93 |
 
 ## Modules
 
@@ -101,6 +101,13 @@ module "bastion_host" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| bastion\_copy\_paste\_enabled | Is Copy/Paste feature enabled for the Bastion Host. | `bool` | `true` | no |
+| bastion\_file\_copy\_enabled | Is File Copy feature enabled for the Bastion Host. | `bool` | `false` | no |
+| bastion\_ip\_connect\_enabled | Is IP Connect feature enabled for the Bastion Host. | `bool` | `false` | no |
+| bastion\_scale\_units | The number of scale units which to provision the Bastion Host. Possible values are between `2` and `50` | `number` | `2` | no |
+| bastion\_shareable\_link\_enabled | Is Shareable Link feature enabled for the Bastion Host. | `bool` | `false` | no |
+| bastion\_sku | The SKU of the Bastion Host. Accepted values are `Basic` and `Standard` | `string` | `"Basic"` | no |
+| bastion\_tunneling\_enabled | Is Tunneling feature enabled for the Bastin Host. | `bool` | `false` | no |
 | client\_name | Client name/account used in naming | `string` | n/a | yes |
 | custom\_bastion\_name | Custom Bastion name, generated if not set | `string` | `""` | no |
 | custom\_ipconfig\_name | Bastion IP Config custom name | `string` | `""` | no |

@@ -1,3 +1,8 @@
+# v5.2.0 - Unreleased
+
+Added
+  * AZ-804: Add multiple options added since `azurerm` `2.93`
+
 # v5.1.0 - 2022-04-15
 
 Added
