@@ -1,7 +1,8 @@
 # v5.2.0 - Unreleased
 
 Added
-  * AZ-804: Add multiple options added since `azurerm` `2.93`
+  * AZ-804: Add multiple options added since `azurerm` `v2.93`
+  * AZ-804: Bump subnet module to `v5.0.0`
 
 # v5.1.0 - 2022-04-15
 

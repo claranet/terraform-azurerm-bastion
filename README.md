@@ -86,7 +86,7 @@ module "bastion_host" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| subnet\_bastion | claranet/subnet/azurerm | 4.2.0 |
+| subnet\_bastion | claranet/subnet/azurerm | 5.0.0 |
 
 ## Resources
 
