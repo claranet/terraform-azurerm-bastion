@@ -46,48 +46,48 @@ variable "subnet_bastion_cidr" {
   type        = string
 }
 
-variable "bastion_sku" {
+variable "sku" {
   description = "The SKU of the Bastion Host. Accepted values are `Basic` and `Standard`"
   type        = string
-  default     = "Basic"
+  default     = "Standard"
 }
 
-variable "bastion_scale_units" {
+variable "scale_units" {
   description = "The number of scale units which to provision the Bastion Host. Possible values are between `2` and `50`"
   type        = number
   default     = 2
   validation {
-    condition     = var.bastion_scale_units >= 2 && var.bastion_scale_units <= 50
-    error_message = "The bastion_scale_units must be between 2 and 50."
+    condition     = var.scale_units >= 2 && var.scale_units <= 50
+    error_message = "The scale_units must be between 2 and 50."
   }
 }
 
-variable "bastion_ip_connect_enabled" {
+variable "ip_connect_enabled" {
   description = "Is IP Connect feature enabled for the Bastion Host."
   type        = bool
-  default     = false
+  default     = true
 }
 
-variable "bastion_shareable_link_enabled" {
+variable "shareable_link_enabled" {
   description = "Is Shareable Link feature enabled for the Bastion Host."
   type        = bool
   default     = false
 }
 
-variable "bastion_tunneling_enabled" {
-  description = "Is Tunneling feature enabled for the Bastin Host."
+variable "tunneling_enabled" {
+  description = "Is Tunneling feature enabled for the Bastion Host."
   type        = bool
-  default     = false
+  default     = true
 }
 
-variable "bastion_copy_paste_enabled" {
+variable "copy_paste_enabled" {
   description = "Is Copy/Paste feature enabled for the Bastion Host."
   type        = bool
   default     = true
 }
 
-variable "bastion_file_copy_enabled" {
+variable "file_copy_enabled" {
   description = "Is File Copy feature enabled for the Bastion Host."
   type        = bool
-  default     = false
+  default     = true
 }
