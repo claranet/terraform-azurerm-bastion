@@ -1,4 +1,4 @@
-# v5.2.0 - Unreleased
+# Unreleased
 
 Added
   * AZ-804: Add multiple options added since `azurerm` `v2.93`
