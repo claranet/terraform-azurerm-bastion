@@ -45,3 +45,49 @@ variable "subnet_bastion_cidr" {
   description = "CIDR range for the dedicated Bastion subnet. Must be a range available in the Vnet."
   type        = string
 }
+
+variable "sku" {
+  description = "The SKU of the Bastion Host. Accepted values are `Basic` and `Standard`"
+  type        = string
+  default     = "Standard"
+}
+
+variable "scale_units" {
+  description = "The number of scale units which to provision the Bastion Host. Possible values are between `2` and `50`"
+  type        = number
+  default     = 2
+  validation {
+    condition     = var.scale_units >= 2 && var.scale_units <= 50
+    error_message = "The scale_units must be between 2 and 50."
+  }
+}
+
+variable "ip_connect_enabled" {
+  description = "Is IP Connect feature enabled for the Bastion Host."
+  type        = bool
+  default     = true
+}
+
+variable "shareable_link_enabled" {
+  description = "Is Shareable Link feature enabled for the Bastion Host."
+  type        = bool
+  default     = false
+}
+
+variable "tunneling_enabled" {
+  description = "Is Tunneling feature enabled for the Bastion Host."
+  type        = bool
+  default     = true
+}
+
+variable "copy_paste_enabled" {
+  description = "Is Copy/Paste feature enabled for the Bastion Host."
+  type        = bool
+  default     = true
+}
+
+variable "file_copy_enabled" {
+  description = "Is File Copy feature enabled for the Bastion Host."
+  type        = bool
+  default     = true
+}
