@@ -81,13 +81,13 @@ module "bastion_host" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.1 |
-| azurerm | >= 2.93 |
+| azurerm | ~> 3.18 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| subnet\_bastion | claranet/subnet/azurerm | 5.0.0 |
+| subnet\_bastion | claranet/subnet/azurerm | 6.0.0 |
 
 ## Resources
 
