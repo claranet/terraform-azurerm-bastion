@@ -36,24 +36,31 @@ variable "virtual_network_name" {
 }
 
 variable "network_resource_group_name" {
-  description = "Vnet and subnet Resource group name. To use only if you need to have a dedicated Resource Group for all Bastion resources. (set via `resource_group_name` var.)"
+  description = "VNet and subnet Resource group name. To use only if you need to have a dedicated Resource Group for all Bastion resources (set via `resource_group_name` var)."
   type        = string
   default     = ""
 }
 
 variable "subnet_bastion_cidr" {
-  description = "CIDR range for the dedicated Bastion subnet. Must be a range available in the Vnet."
+  description = "CIDR range for the dedicated Bastion subnet. Must be a range available in the VNet."
   type        = string
 }
 
+variable "public_ip_zones" {
+  description = "Zones for public IP attached to the Bastion Host. Can be `null` if no zone distpatch."
+  type        = list(number)
+  default     = [1, 2, 3]
+}
+
+# Bastion parameters
 variable "sku" {
-  description = "The SKU of the Bastion Host. Accepted values are `Basic` and `Standard`"
+  description = "The SKU of the Bastion Host. Accepted values are `Basic` and `Standard`."
   type        = string
   default     = "Standard"
 }
 
 variable "scale_units" {
-  description = "The number of scale units which to provision the Bastion Host. Possible values are between `2` and `50`"
+  description = "The number of scale units which to provision the Bastion Host. Possible values are between `2` and `50`."
   type        = number
   default     = 2
   validation {

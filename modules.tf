@@ -15,9 +15,9 @@ module "subnet_bastion" {
   # Fixed name, imposed by Azure
   custom_subnet_name = "AzureBastionSubnet"
 
-  # No NSG because the Bastion needs to generates its own rules
+  # No NSG because the Bastion needs to generate its own rules
   network_security_group_name = null
 
-  # No RTB because the Bastion needs to generates its own routes and propagate them
+  # No RTB because the Bastion needs to generate its own routes and propagate them
   route_table_name = null
 }

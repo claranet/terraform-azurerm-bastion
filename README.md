@@ -116,13 +116,14 @@ module "bastion_host" {
 | location\_short | Short string for Azure location | `string` | n/a | yes |
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
-| network\_resource\_group\_name | Vnet and subnet Resource group name. To use only if you need to have a dedicated Resource Group for all Bastion resources. (set via `resource_group_name` var.) | `string` | `""` | no |
+| network\_resource\_group\_name | VNet and subnet Resource group name. To use only if you need to have a dedicated Resource Group for all Bastion resources (set via `resource_group_name` var). | `string` | `""` | no |
+| public\_ip\_zones | Zones for public IP attached to the Bastion Host. Can be `null` if no zone distpatch. | `list(number)` | <pre>[<br>  1,<br>  2,<br>  3<br>]</pre> | no |
 | resource\_group\_name | Name of the resource group | `string` | n/a | yes |
-| scale\_units | The number of scale units which to provision the Bastion Host. Possible values are between `2` and `50` | `number` | `2` | no |
+| scale\_units | The number of scale units which to provision the Bastion Host. Possible values are between `2` and `50`. | `number` | `2` | no |
 | shareable\_link\_enabled | Is Shareable Link feature enabled for the Bastion Host. | `bool` | `false` | no |
-| sku | The SKU of the Bastion Host. Accepted values are `Basic` and `Standard` | `string` | `"Standard"` | no |
+| sku | The SKU of the Bastion Host. Accepted values are `Basic` and `Standard`. | `string` | `"Standard"` | no |
 | stack | Project stack name | `string` | n/a | yes |
-| subnet\_bastion\_cidr | CIDR range for the dedicated Bastion subnet. Must be a range available in the Vnet. | `string` | n/a | yes |
+| subnet\_bastion\_cidr | CIDR range for the dedicated Bastion subnet. Must be a range available in the VNet. | `string` | n/a | yes |
 | tunneling\_enabled | Is Tunneling feature enabled for the Bastion Host. | `bool` | `true` | no |
 | use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `custom_rg_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
 | virtual\_network\_name | Virtual Network Name where the dedicated Subnet and Bastion will be created. | `string` | n/a | yes |
