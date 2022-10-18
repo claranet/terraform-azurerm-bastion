@@ -18,10 +18,10 @@ resource "azurerm_bastion_host" "bastion" {
   sku         = var.sku
   scale_units = var.scale_units
 
-  ip_connect_enabled     = var.sku == "Standard" ? var.ip_connect_enabled : false
-  shareable_link_enabled = var.sku == "Standard" ? var.shareable_link_enabled : false
-  tunneling_enabled      = var.sku == "Standard" ? var.tunneling_enabled : false
-  file_copy_enabled      = var.sku == "Standard" ? var.file_copy_enabled : false
+  ip_connect_enabled     = var.sku != "Basic" && var.ip_connect_enabled
+  shareable_link_enabled = var.sku != "Basic" && var.shareable_link_enabled
+  tunneling_enabled      = var.sku != "Basic" && var.tunneling_enabled
+  file_copy_enabled      = var.sku != "Basic" && var.file_copy_enabled
   copy_paste_enabled     = var.copy_paste_enabled
 
   # Must be in the same RG as VNet
