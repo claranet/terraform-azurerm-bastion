@@ -29,6 +29,18 @@ module "vnet" {
   vnet_cidr           = ["10.10.1.0/16"]
 }
 
+module "logs" {
+  source  = "claranet/run-common/azurerm//modules/logs"
+  version = "x.x.x"
+
+  client_name         = var.client_name
+  environment         = var.environment
+  stack               = var.stack
+  location            = module.azure_region.location
+  location_short      = module.azure_region.location_short
+  resource_group_name = module.rg.resource_group_name
+}
+
 module "bastion_host" {
   source  = "claranet/bastion/azurerm"
   version = "x.x.x"
@@ -43,4 +55,13 @@ module "bastion_host" {
   subnet_bastion_cidr = "10.10.1.0/27"
 
   virtual_network_name = module.vnet.virtual_network_name
+
+  logs_destinations_ids = [
+    module.logs.logs_storage_account_id,
+    module.logs.log_analytics_workspace_id
+  ]
+
+  extra_tags = {
+    foo = "bar"
+  }
 }

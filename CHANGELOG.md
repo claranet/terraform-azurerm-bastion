@@ -2,6 +2,7 @@
 
 Added
   * AZ-879: Add `public_ip_zones` parameter
+  * AZ-846: Add diagnostics settings module
 
 Changed
   * AZ-844: Bump `subnet` module to latest version

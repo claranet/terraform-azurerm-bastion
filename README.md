@@ -59,6 +59,18 @@ module "vnet" {
   vnet_cidr           = ["10.10.1.0/16"]
 }
 
+module "logs" {
+  source  = "claranet/run-common/azurerm//modules/logs"
+  version = "x.x.x"
+
+  client_name         = var.client_name
+  environment         = var.environment
+  stack               = var.stack
+  location            = module.azure_region.location
+  location_short      = module.azure_region.location_short
+  resource_group_name = module.rg.resource_group_name
+}
+
 module "bastion_host" {
   source  = "claranet/bastion/azurerm"
   version = "x.x.x"
@@ -73,6 +85,15 @@ module "bastion_host" {
   subnet_bastion_cidr = "10.10.1.0/27"
 
   virtual_network_name = module.vnet.virtual_network_name
+
+  logs_destinations_ids = [
+    module.logs.logs_storage_account_id,
+    module.logs.log_analytics_workspace_id
+  ]
+
+  extra_tags = {
+    foo = "bar"
+  }
 }
 ```
 
@@ -81,12 +102,13 @@ module "bastion_host" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.1 |
-| azurerm | ~> 3.18 |
+| azurerm | ~> 3.22 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
+| diagnostics | claranet/diagnostic-settings/azurerm | 6.1.0 |
 | subnet\_bastion | claranet/subnet/azurerm | 6.0.0 |
 
 ## Resources
@@ -105,6 +127,7 @@ module "bastion_host" {
 | client\_name | Client name/account used in naming | `string` | n/a | yes |
 | copy\_paste\_enabled | Is Copy/Paste feature enabled for the Bastion Host. | `bool` | `true` | no |
 | custom\_bastion\_name | Custom Bastion name, generated if not set | `string` | `""` | no |
+| custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | custom\_ipconfig\_name | Bastion IP Config custom name | `string` | `""` | no |
 | custom\_public\_ip\_name | Bastion IP Config resource custom name | `string` | `""` | no |
 | default\_tags\_enabled | Option to enable or disable default tags | `bool` | `true` | no |
@@ -114,6 +137,10 @@ module "bastion_host" {
 | ip\_connect\_enabled | Is IP Connect feature enabled for the Bastion Host. | `bool` | `true` | no |
 | location | Azure region to use | `string` | n/a | yes |
 | location\_short | Short string for Azure location | `string` | n/a | yes |
+| logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
+| logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separate> | `list(string)` | n/a | yes |
+| logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
+| logs\_retention\_days | Number of days to keep logs on storage account. | `number` | `30` | no |
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | network\_resource\_group\_name | VNet and subnet Resource group name. To use only if you need to have a dedicated Resource Group for all Bastion resources (set via `resource_group_name` var). | `string` | `""` | no |
