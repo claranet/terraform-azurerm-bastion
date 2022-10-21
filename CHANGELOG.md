@@ -1,7 +1,11 @@
 # Unreleased
 
+Added
+  * AZ-879: Add `public_ip_zones` parameter
+
 Changed
   * AZ-844: Bump `subnet` module to latest version
+  * AZ-879: Disable `ip_connect_enabled`, `shareable_link_enabled`, `tunneling_enabled` and `file_copy_enabled` parameters when the Azure Bastion SKU is `Basic`
 
 # v6.0.0 - 2022-08-05
 
