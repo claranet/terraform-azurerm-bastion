@@ -1,4 +1,4 @@
-# Unreleased
+# v6.1.0 - 2022-10-21
 
 Added
   * AZ-879: Add `public_ip_zones` parameter
