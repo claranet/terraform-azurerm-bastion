@@ -1,5 +1,5 @@
 resource "azurerm_public_ip" "bastion_pubip" {
-  name                = coalesce(var.custom_public_ip_name, azurecaf_name.bastion_pip.result)
+  name                = coalesce(var.custom_public_ip_name, data.azurecaf_name.bastion_pip.result)
   location            = var.location
   resource_group_name = var.resource_group_name
 
@@ -12,7 +12,7 @@ resource "azurerm_public_ip" "bastion_pubip" {
 }
 
 resource "azurerm_bastion_host" "bastion" {
-  name     = coalesce(var.custom_bastion_name, azurecaf_name.bastion.result)
+  name     = coalesce(var.custom_bastion_name, data.azurecaf_name.bastion.result)
   location = var.location
 
   sku         = var.sku
