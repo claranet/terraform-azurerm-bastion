@@ -1,3 +1,8 @@
+# Unreleased
+
+Changed
+  * AZ-908: Bump `subnet` module with latest CAF naming using data
+
 # v6.2.0 - 2022-11-23
 
 Changed
