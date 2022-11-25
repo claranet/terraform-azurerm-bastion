@@ -109,7 +109,7 @@ module "bastion_host" {
 | Name | Source | Version |
 |------|--------|---------|
 | diagnostics | claranet/diagnostic-settings/azurerm | 6.2.0 |
-| subnet\_bastion | claranet/subnet/azurerm | 6.0.0 |
+| subnet\_bastion | claranet/subnet/azurerm | 6.1.0 |
 
 ## Resources
 
