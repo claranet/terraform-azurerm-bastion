@@ -1,4 +1,4 @@
-# Unreleased
+# v6.2.2 - 2023-04-04
 
 Fixed
   * AZ-1049: Fix public IP resource name
