@@ -1,4 +1,4 @@
-# Unreleased
+# v6.3.0 - 2024-02-29
 
 Changed
   * AZ-1366: Bump `logs` module to latest version and remove `logs_retention_days` variable
