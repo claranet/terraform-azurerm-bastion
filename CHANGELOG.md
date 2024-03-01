@@ -1,3 +1,8 @@
+# Unreleased
+
+Fixed
+  * AZ-1367: Changed `subnet_bastion` file name to `r-subnet.tf`
+
 # v6.3.0 - 2024-02-29
 
 Changed
