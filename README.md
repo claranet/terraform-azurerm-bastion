@@ -170,6 +170,7 @@ module "bastion_host" {
 | bastion\_name | Azure Bastion name. |
 | bastion\_public\_ip | Azure Bastion public IP. |
 | bastion\_public\_ip\_name | Azure Bastion public IP resource name. |
+| bastion\_subnet\_cidr | Dedicated subnet cidr list for the Bastion. |
 | bastion\_subnet\_id | Dedicated subnet id for the Bastion. |
 <!-- END_TF_DOCS -->
 
