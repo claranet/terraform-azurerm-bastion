@@ -5,7 +5,7 @@ output "bastion_subnet_id" {
 
 output "bastion_subnet_cidr" {
   description = "Dedicated subnet cidr list for the Bastion."
-  value       = module.subnet_bastion.subnet_cidr_list
+  value       = module.subnet_bastion.subnet_cidr_list[0]
 }
 
 output "bastion_id" {
