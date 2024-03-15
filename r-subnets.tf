@@ -1,6 +1,6 @@
 module "subnet_bastion" {
   source  = "claranet/subnet/azurerm"
-  version = "6.1.0"
+  version = "6.3.0"
 
   environment    = var.environment
   location_short = var.location_short
