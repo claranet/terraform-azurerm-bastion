@@ -4,8 +4,8 @@ output "bastion_subnet_id" {
 }
 
 output "bastion_subnet_cidr" {
-  description = "Dedicated subnet cidr for the Bastion."
-  value       = module.subnet_bastion.subnet_cidr_list[0]
+  description = "Dedicated subnet CIDR for the Bastion."
+  value       = var.subnet_bastion_cidr
 }
 
 output "bastion_id" {
