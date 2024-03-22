@@ -1,3 +1,8 @@
+# Unreleased
+
+Added
+  * AZ-1367: Added `bastion_subnet_cidr` to outputs
+
 # v6.3.1 - 2024-03-01
 
 Fixed

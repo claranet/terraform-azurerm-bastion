@@ -3,6 +3,11 @@ output "bastion_subnet_id" {
   value       = module.subnet_bastion.subnet_id
 }
 
+output "bastion_subnet_cidr" {
+  description = "Dedicated subnet CIDR for the Bastion."
+  value       = var.subnet_bastion_cidr
+}
+
 output "bastion_id" {
   description = "Azure Bastion id."
   value       = azurerm_bastion_host.bastion.id
