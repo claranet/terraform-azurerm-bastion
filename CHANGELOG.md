@@ -1,3 +1,33 @@
+## 7.0.0 (2024-05-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* minimal version of Terraform is now `v1.3`
+
+### build
+
+* bump tf minimum version 15dbff6
+
+
+### Continuous Integration
+
+* **AZ-1391:** enable semantic-release [skip ci] b4d149e
+* **AZ-1391:** update semantic-release config [skip ci] 03ae3f0
+
+
+### Miscellaneous Chores
+
+* **deps:** enable automerge on renovate 100ef55
+* **deps:** update dependency claranet/subnet/azurerm to v7 5e19bca
+* **deps:** update dependency opentofu to v1.7.0 4398079
+* **deps:** update dependency tflint to v0.51.0 45553c3
+* **deps:** update dependency trivy to v0.50.2 8970dd8
+* **deps:** update dependency trivy to v0.50.4 2906578
+* **deps:** update dependency trivy to v0.51.0 f1b42f2
+* **pre-commit:** update commitlint hook 72a2d59
+* **release:** remove legacy `VERSION` file 351e762
+
 # v6.4.0 - 2024-03-22
 
 Added
