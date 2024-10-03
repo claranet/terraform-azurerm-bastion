@@ -1,3 +1,13 @@
+## 7.1.0 (2024-10-03)
+
+### Features
+
+* use Claranet "azurecaf" provider dffa78d
+
+### Miscellaneous Chores
+
+* **deps:** update dependency trivy to v0.56.0 fcf178e
+
 ## 7.0.1 (2024-10-01)
 
 ### Documentation
