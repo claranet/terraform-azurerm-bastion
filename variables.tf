@@ -52,6 +52,12 @@ variable "public_ip_zones" {
   default     = [1, 2, 3]
 }
 
+variable "default_outbound_access_enabled" {
+  description = "Enable or Disable default_outbound_access. See https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/default-outbound-access"
+  type        = bool
+  default     = false
+}
+
 # Bastion parameters
 variable "sku" {
   description = "The SKU of the Bastion Host. Accepted values are `Basic` and `Standard`."

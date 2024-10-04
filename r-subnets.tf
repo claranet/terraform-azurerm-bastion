@@ -20,4 +20,6 @@ module "subnet_bastion" {
 
   # No RTB because the Bastion needs to generate its own routes and propagate them
   route_table_name = null
+
+  default_outbound_access_enabled = var.default_outbound_access_enabled
 }
