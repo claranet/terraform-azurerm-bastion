@@ -1,3 +1,25 @@
+## 7.2.0 (2024-10-09)
+
+### Features
+
+* **AZ-1470:** add `default_outbound_access_enabled` variable 7cf59f9
+
+### Documentation
+
+* **AZ-1470:** fix variable description f7b51be
+
+### Miscellaneous Chores
+
+* **deps:** update dependency claranet/diagnostic-settings/azurerm to v7 7145f3d
+* **deps:** update dependency claranet/subnet/azurerm to v7.2.0 bad6f09
+* **deps:** update dependency opentofu to v1.8.3 b93eebf
+* **deps:** update dependency pre-commit to v4 14bca87
+* **deps:** update dependency pre-commit to v4.0.1 6a3752e
+* **deps:** update dependency trivy to v0.56.1 9795f75
+* **deps:** update pre-commit hook pre-commit/pre-commit-hooks to v5 d18e851
+* prepare for new examples structure c0cf3f2
+* update examples structure 4b9fc55
+
 ## 7.1.0 (2024-10-03)
 
 ### Features
