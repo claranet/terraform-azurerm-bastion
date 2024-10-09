@@ -114,7 +114,7 @@ module "bastion_host" {
 | custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | custom\_ipconfig\_name | Bastion IP Config custom name | `string` | `""` | no |
 | custom\_public\_ip\_name | Bastion IP Config resource custom name | `string` | `""` | no |
-| default\_outbound\_access\_enabled | Enable or Disable default\_outbound\_access. See https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/default-outbound-access | `bool` | `false` | no |
+| default\_outbound\_access\_enabled | Enable or Disable default\_outbound\_access. See [documentation](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/default-outbound-access). | `bool` | `false` | no |
 | default\_tags\_enabled | Option to enable or disable default tags | `bool` | `true` | no |
 | environment | Project environment | `string` | n/a | yes |
 | extra\_tags | Additional tags to associate with resources | `map(string)` | `{}` | no |
