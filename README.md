@@ -39,59 +39,32 @@ More details about variables set by the `terraform-wrapper` available in the [do
 [Hashicorp Terraform](https://github.com/hashicorp/terraform/). Instead, we recommend to use [OpenTofu](https://github.com/opentofu/opentofu/).
 
 ```hcl
-module "azure_region" {
-  source  = "claranet/regions/azurerm"
-  version = "x.x.x"
-
-  azure_region = var.azure_region
-}
-
-module "rg" {
-  source  = "claranet/rg/azurerm"
-  version = "x.x.x"
-
-  location    = module.azure_region.location
-  client_name = var.client_name
-  environment = var.environment
-  stack       = var.stack
-}
-
 module "vnet" {
   source  = "claranet/vnet/azurerm"
   version = "x.x.x"
 
-  environment    = var.environment
   location       = module.azure_region.location
   location_short = module.azure_region.location_short
   client_name    = var.client_name
+  environment    = var.environment
   stack          = var.stack
 
   resource_group_name = module.rg.resource_group_name
-  vnet_cidr           = ["10.10.1.0/16"]
-}
 
-module "logs" {
-  source  = "claranet/run/azurerm//modules/logs"
-  version = "x.x.x"
-
-  client_name         = var.client_name
-  environment         = var.environment
-  stack               = var.stack
-  location            = module.azure_region.location
-  location_short      = module.azure_region.location_short
-  resource_group_name = module.rg.resource_group_name
+  vnet_cidr = ["10.10.1.0/16"]
 }
 
 module "bastion_host" {
   source  = "claranet/bastion/azurerm"
   version = "x.x.x"
 
-  client_name         = var.client_name
-  environment         = var.environment
-  stack               = var.stack
+  location       = module.azure_region.location
+  location_short = module.azure_region.location_short
+  client_name    = var.client_name
+  environment    = var.environment
+  stack          = var.stack
+
   resource_group_name = module.rg.resource_group_name
-  location            = module.azure_region.location
-  location_short      = module.azure_region.location_short
 
   subnet_bastion_cidr = "10.10.1.0/27"
 
@@ -99,7 +72,7 @@ module "bastion_host" {
 
   logs_destinations_ids = [
     module.logs.logs_storage_account_id,
-    module.logs.log_analytics_workspace_id
+    module.logs.log_analytics_workspace_id,
   ]
 
   extra_tags = {
@@ -141,6 +114,7 @@ module "bastion_host" {
 | custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | custom\_ipconfig\_name | Bastion IP Config custom name | `string` | `""` | no |
 | custom\_public\_ip\_name | Bastion IP Config resource custom name | `string` | `""` | no |
+| default\_outbound\_access\_enabled | Enable or Disable default\_outbound\_access. See [documentation](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/default-outbound-access). | `bool` | `false` | no |
 | default\_tags\_enabled | Option to enable or disable default tags | `bool` | `true` | no |
 | environment | Project environment | `string` | n/a | yes |
 | extra\_tags | Additional tags to associate with resources | `map(string)` | `{}` | no |
