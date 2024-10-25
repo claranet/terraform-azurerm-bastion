@@ -92,7 +92,7 @@ module "bastion_host" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| diagnostics | claranet/diagnostic-settings/azurerm | ~> 7.0.0 |
+| diagnostics | claranet/diagnostic-settings/azurerm | ~> 8.0.0 |
 | subnet\_bastion | claranet/subnet/azurerm | 7.2.0 |
 
 ## Resources
