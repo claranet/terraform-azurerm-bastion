@@ -1,5 +1,5 @@
-resource "azurerm_public_ip" "bastion_pubip" {
-  name                = coalesce(var.custom_public_ip_name, data.azurecaf_name.bastion_pip.result)
+resource "azurerm_public_ip" "main" {
+  name                = local.public_ip_name
   location            = var.location
   resource_group_name = var.resource_group_name
 
@@ -11,8 +11,13 @@ resource "azurerm_public_ip" "bastion_pubip" {
   tags = merge(local.default_tags, var.extra_tags)
 }
 
-resource "azurerm_bastion_host" "bastion" {
-  name     = coalesce(var.custom_bastion_name, data.azurecaf_name.bastion.result)
+moved {
+  from = azurerm_public_ip.bastion_pubip
+  to   = azurerm_public_ip.main
+}
+
+resource "azurerm_bastion_host" "main" {
+  name     = local.name
   location = var.location
 
   sku         = var.sku
@@ -28,10 +33,15 @@ resource "azurerm_bastion_host" "bastion" {
   resource_group_name = coalesce(var.network_resource_group_name, var.resource_group_name)
 
   ip_configuration {
-    name                 = coalesce(var.custom_ipconfig_name, "bastionIPConfig")
-    public_ip_address_id = azurerm_public_ip.bastion_pubip.id
-    subnet_id            = module.subnet_bastion.subnet_id
+    name                 = local.ip_config_name
+    public_ip_address_id = azurerm_public_ip.main.id
+    subnet_id            = module.subnet_bastion.id
   }
 
   tags = merge(local.default_tags, var.extra_tags)
+}
+
+moved {
+  from = azurerm_bastion_host.bastion
+  to   = azurerm_bastion_host.main
 }
