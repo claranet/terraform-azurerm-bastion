@@ -93,7 +93,7 @@ module "bastion_host" {
 | Name | Source | Version |
 |------|--------|---------|
 | diagnostics | claranet/diagnostic-settings/azurerm | ~> 8.0.0 |
-| subnet\_bastion | git::ssh://git@git.fr.clara.net/claranet/projects/cloud/azure/terraform/modules/subnet.git | refactor/AZ-1088-rework-module |
+| subnet\_bastion | claranet/subnet/azurerm | ~> 8.0.0 |
 
 ## Resources
 
