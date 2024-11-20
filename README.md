@@ -71,8 +71,8 @@ module "bastion_host" {
   virtual_network_name = module.vnet.name
 
   logs_destinations_ids = [
-    module.logs.logs_storage_account_id,
-    module.logs.log_analytics_workspace_id,
+    module.run.logs_storage_account_id,
+    module.run.log_analytics_workspace_id,
   ]
 
   extra_tags = {
@@ -108,20 +108,20 @@ module "bastion_host" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| client\_name | Client name/account used in naming | `string` | n/a | yes |
+| client\_name | Client name/account used in naming. | `string` | n/a | yes |
 | copy\_paste\_enabled | Is Copy/Paste feature enabled for the Bastion Host. | `bool` | `true` | no |
 | custom\_ipconfig\_name | Bastion IP Config custom name. | `string` | `""` | no |
 | custom\_name | Custom Bastion name, generated if not set. | `string` | `""` | no |
 | custom\_public\_ip\_name | Bastion IP Config resource custom name. | `string` | `""` | no |
 | default\_outbound\_access\_enabled | Enable or Disable default\_outbound\_access. See [documentation](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/default-outbound-access). | `bool` | `false` | no |
-| default\_tags\_enabled | Option to enable or disable default tags | `bool` | `true` | no |
+| default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be `default` if not set. | `string` | `"default"` | no |
-| environment | Project environment | `string` | n/a | yes |
-| extra\_tags | Additional tags to associate with resources | `map(string)` | `{}` | no |
+| environment | Project environment. | `string` | n/a | yes |
+| extra\_tags | Additional tags to associate with resources. | `map(string)` | `{}` | no |
 | file\_copy\_enabled | Is File Copy feature enabled for the Bastion Host. | `bool` | `true` | no |
 | ip\_connect\_enabled | Is IP Connect feature enabled for the Bastion Host. | `bool` | `true` | no |
-| location | Azure region to use | `string` | n/a | yes |
-| location\_short | Short string for Azure location | `string` | n/a | yes |
+| location | Azure region to use. | `string` | n/a | yes |
+| location\_short | Short string for Azure location. | `string` | n/a | yes |
 | logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
 | logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to use Azure EventHub as a destination, you must provide a formatted string containing both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the <code>&#124;</code> character. | `list(string)` | n/a | yes |
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
@@ -129,11 +129,11 @@ module "bastion_host" {
 | name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
 | network\_resource\_group\_name | VNet and subnet Resource group name. To use only if you need to have a dedicated Resource Group for all Bastion resources (set via `resource_group_name` var). | `string` | `""` | no |
 | public\_ip\_zones | Zones for public IP attached to the Bastion Host. Can be `null` if no zone distpatch. | `list(number)` | <pre>[<br/>  1,<br/>  2,<br/>  3<br/>]</pre> | no |
-| resource\_group\_name | Name of the resource group | `string` | n/a | yes |
+| resource\_group\_name | Name of the resource group. | `string` | n/a | yes |
 | scale\_units | The number of scale units which to provision the Bastion Host. Possible values are between `2` and `50`. | `number` | `2` | no |
 | shareable\_link\_enabled | Is Shareable Link feature enabled for the Bastion Host. | `bool` | `false` | no |
 | sku | The SKU of the Bastion Host. Accepted values are `Basic` and `Standard`. | `string` | `"Standard"` | no |
-| stack | Project stack name | `string` | n/a | yes |
+| stack | Project stack name. | `string` | n/a | yes |
 | subnet\_bastion\_cidr | CIDR range for the dedicated Bastion subnet. Must be a range available in the VNet. | `string` | n/a | yes |
 | tunneling\_enabled | Is Tunneling feature enabled for the Bastion Host. | `bool` | `true` | no |
 | virtual\_network\_name | Virtual Network Name where the dedicated Subnet and Bastion will be created. | `string` | n/a | yes |
@@ -145,7 +145,7 @@ module "bastion_host" {
 | fqdn | Azure Bastion FQDN / generated DNS name. |
 | id | Azure Bastion ID. |
 | module\_diagnostics | Diagnostics settings module outputs. |
-| module\_subnet | Module subnet\_bastion object outputs. |
+| module\_subnet | Module subnet bastion object outputs. |
 | name | Azure Bastion name. |
 | public\_ip\_address | Azure Bastion public IP address. |
 | public\_ip\_name | Azure Bastion public IP resource name. |

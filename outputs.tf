@@ -1,5 +1,5 @@
 output "module_subnet" {
-  description = "Module subnet_bastion object outputs."
+  description = "Module subnet bastion object outputs."
   value       = module.subnet_bastion
 }
 

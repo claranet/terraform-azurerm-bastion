@@ -30,8 +30,8 @@ module "bastion_host" {
   virtual_network_name = module.vnet.name
 
   logs_destinations_ids = [
-    module.logs.logs_storage_account_id,
-    module.logs.log_analytics_workspace_id,
+    module.run.logs_storage_account_id,
+    module.run.log_analytics_workspace_id,
   ]
 
   extra_tags = {

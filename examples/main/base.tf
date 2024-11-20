@@ -16,8 +16,8 @@ module "rg" {
   stack          = var.stack
 }
 
-module "logs" {
-  source  = "claranet/run/azurerm//modules/logs"
+module "run" {
+  source  = "claranet/run/azurerm"
   version = "x.x.x"
 
   location       = module.azure_region.location
