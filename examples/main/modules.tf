@@ -8,9 +8,9 @@ module "vnet" {
   environment    = var.environment
   stack          = var.stack
 
-  resource_group_name = module.rg.resource_group_name
+  resource_group_name = module.rg.name
 
-  vnet_cidr = ["10.10.1.0/16"]
+  cidrs = ["10.10.1.0/16"]
 }
 
 module "bastion_host" {
@@ -23,15 +23,15 @@ module "bastion_host" {
   environment    = var.environment
   stack          = var.stack
 
-  resource_group_name = module.rg.resource_group_name
+  resource_group_name = module.rg.name
 
   subnet_bastion_cidr = "10.10.1.0/27"
 
-  virtual_network_name = module.vnet.virtual_network_name
+  virtual_network_name = module.vnet.name
 
   logs_destinations_ids = [
-    module.logs.logs_storage_account_id,
-    module.logs.log_analytics_workspace_id,
+    module.run.logs_storage_account_id,
+    module.run.log_analytics_workspace_id,
   ]
 
   extra_tags = {

@@ -1,34 +1,54 @@
-output "bastion_subnet_id" {
-  description = "Dedicated subnet id for the Bastion."
-  value       = module.subnet_bastion.subnet_id
+output "module_subnet" {
+  description = "Module subnet bastion object outputs."
+  value       = module.subnet_bastion
 }
 
-output "bastion_subnet_cidr" {
+output "module_diagnostics" {
+  description = "Diagnostics settings module outputs."
+  value       = module.diagnostics
+}
+
+output "resource_public_ip" {
+  description = "Azure Bastion public resource object."
+  value       = azurerm_public_ip.main
+}
+
+output "resource" {
+  description = "Azure Bastion resource object."
+  value       = azurerm_bastion_host.main
+}
+
+output "id" {
+  description = "Azure Bastion ID."
+  value       = azurerm_bastion_host.main.id
+}
+
+output "name" {
+  description = "Azure Bastion name."
+  value       = azurerm_bastion_host.main.name
+}
+
+output "subnet_cidr" {
   description = "Dedicated subnet CIDR for the Bastion."
   value       = var.subnet_bastion_cidr
 }
 
-output "bastion_id" {
-  description = "Azure Bastion id."
-  value       = azurerm_bastion_host.bastion.id
-}
-
-output "bastion_name" {
-  description = "Azure Bastion name."
-  value       = azurerm_bastion_host.bastion.name
-}
-
-output "bastion_fqdn" {
+output "fqdn" {
   description = "Azure Bastion FQDN / generated DNS name."
-  value       = azurerm_bastion_host.bastion.dns_name
+  value       = azurerm_bastion_host.main.dns_name
 }
 
-output "bastion_public_ip_name" {
+output "subnet_id" {
+  description = "Dedicated subnet id for the Bastion."
+  value       = module.subnet_bastion.id
+}
+
+output "public_ip_name" {
   description = "Azure Bastion public IP resource name."
-  value       = azurerm_public_ip.bastion_pubip.name
+  value       = azurerm_public_ip.main.name
 }
 
-output "bastion_public_ip" {
-  description = "Azure Bastion public IP."
-  value       = azurerm_public_ip.bastion_pubip.ip_address
+output "public_ip_address" {
+  description = "Azure Bastion public IP address."
+  value       = azurerm_public_ip.main.ip_address
 }
