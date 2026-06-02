@@ -11,11 +11,13 @@ output "module_diagnostics" {
 output "resource_public_ip" {
   description = "Azure Bastion public resource object."
   value       = azurerm_public_ip.main
+  sensitive   = true
 }
 
 output "resource" {
   description = "Azure Bastion resource object."
   value       = azurerm_bastion_host.main
+  sensitive   = true
 }
 
 output "id" {
