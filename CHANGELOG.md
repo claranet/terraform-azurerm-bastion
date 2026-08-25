@@ -1,3 +1,27 @@
+## 9.0.0 (2026-08-25)
+
+### ⚠ BREAKING CHANGES
+
+* **SREAA-368:** the minimum OpenTofu version is raised to `1.12` and the AzureRM provider is
+constrained to `~> 5.0`, so consumers must upgrade both before using this release. Two
+provider-level behaviour changes shipped with AzureRM 5.0 also apply:
+`resource_provider_registrations` now defaults to `none` instead of `legacy`, so no resource
+provider is registered automatically anymore, and the `enhanced_validation` block moved inside
+`features` with location and resource provider validation now disabled by default, which defers
+those errors from plan time to apply time. The `diagnostic-settings` and `subnet` submodules
+move to `~> 9.0`, which require AzureRM `~> 5.0` as well.
+
+### Features
+
+* **SREAA-368:** upgrade module to v9 (OpenTofu >= 1.12, AzureRM ~> 5.0) 09771fc
+
+### Miscellaneous Chores
+
+* **deps:** update dependency opentofu to v1.12.5 f057434
+* **deps:** update dependency tflint to v0.64.0 963754c
+* **SREAA-368:** synchronize committed.toml and AGENTS.md from the ci template bb809c1
+* **v9:** 🐛 synchronize common files and docs f9a86d0
+
 ## 8.0.5 (2026-07-20)
 
 ### Bug Fixes
